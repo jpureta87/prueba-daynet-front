@@ -1,0 +1,52 @@
+<div class="list row">
+    <div *ngIf="listadoClientes.length > 0" class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Buscar por ID" [(ngModel)]="idBuscar" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="buscarPorId()" required>Buscar</button>
+            </div>
+            <button class="btn btn-info ml-2" (click)="ngOnInit()">Mostrar Todos</button>
+        </div>
+    </div>
+    <div *ngIf="listadoClientes.length > 0" class="col-md-6">
+        <h4>Clientes Registrados</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let cliente of listadoClientes; let i = index" [class.active]="i == indiceActual" (click)="setClienteActual(cliente, i)" style="cursor: pointer;">
+                {{ cliente.nombre }} {{cliente.apellido}}
+            </li>
+        </ul>
+        <button class="btn btn-danger mt-2" (click)="borrarTodos()">Borrar Todos</button>
+    </div>
+
+
+    <div *ngIf="listadoClientes.length == 0" class="col-md-6">
+        <h4>No hay Clientes registrados!</h4>
+    </div>
+
+    <div *ngIf="listadoClientes.length > 0" class="col-md-6">
+        <div *ngIf="clienteActual">
+            <h4>Cliente</h4>
+            <div>
+                <label><strong>ID de Cliente:</strong></label> {{ clienteActual.id }}
+            </div>
+            <div>
+                <label><strong>Nombre:</strong></label> {{ clienteActual.nombre }}
+            </div>
+            <div>
+                <label><strong>Apellido:</strong></label> {{ clienteActual.apellido }}
+            </div>
+            <div>
+                <label><strong>Cuenta:</strong></label> {{ clienteActual.cuenta }}
+            </div>
+
+            <a class="badge badge-warning" href="/clientes/{{ clienteActual.id }}">
+                Editar
+            </a>
+        </div>
+
+        <div *ngIf="!clienteActual">
+            <br />
+            <p><i>** Seleccione un Cliente para mas detalles **</i></p>
+        </div>
+    </div>
+</div>

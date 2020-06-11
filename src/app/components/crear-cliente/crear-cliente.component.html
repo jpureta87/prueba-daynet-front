@@ -1,0 +1,37 @@
+<div class="container">
+    <h4 class="mb-4 mt-5">Registro de Clientes</h4>
+    <div class="submit-form ml-3">
+        <div *ngIf="!submited">
+            <div class="form-group row">
+                <div class="col-xs-4">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control form-control" id="nombre" required [(ngModel)]="cliente.nombre" name="nombre" />
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class="col-xs-4">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" required [(ngModel)]="cliente.apellido" name="apellido" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-xs-4">
+                    <label for="cuenta">Cuenta</label>
+                    <input type="text" class="form-control" id="cuenta" required [(ngModel)]="cliente.cuenta" name="cuenta" />
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-4">
+                    <button (click)="crearCliente()" class="btn btn-success">Registrar</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
